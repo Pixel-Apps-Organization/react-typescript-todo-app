@@ -3,23 +3,36 @@ import { Todo, ToggleComplete } from "./types";
 import { TodoListItem } from "./TodoListItem";
 
 interface TodoListProps {
-  todos: Array<Todo>;
+  activeTodos: Array<Todo>;
+  completedTodos: Array<Todo>;
   toggleComplete: ToggleComplete;
 }
 
 export const TodoList: React.FC<TodoListProps> = ({
-  todos,
+  activeTodos,
+  completedTodos,
   toggleComplete
 }) => {
   return (
-    <ul>
-      {todos.map(todo => (
-        <TodoListItem
-          key={todo.text}
-          todo={todo}
-          toggleComplete={toggleComplete}
-        />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {activeTodos.map(todo => (
+          <TodoListItem
+            key={todo.text}
+            todo={todo}
+            toggleComplete={toggleComplete}
+          />
+        ))}
+      </ul>
+      <ul>
+        {completedTodos.map(todo => (
+          <TodoListItem
+            key={todo.text}
+            todo={todo}
+            toggleComplete={toggleComplete}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
