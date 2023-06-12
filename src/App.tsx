@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const toggleComplete: ToggleComplete = selectedTodo => {
     const updatedTodos = todos.map(todo => {
       if (todo === selectedTodo) {
-        return { ...todo, complete: true };
+        return { ...todo, complete: !todo.complete };
       }
       return todo;
     });
