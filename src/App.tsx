@@ -22,9 +22,12 @@ const App: React.FC = () => {
       setTodos([...todos, { text: newTodo, complete: false }]);
   };
 
+  const activeTodos = todos.filter(todo => !todo.complete);
+  const completedTodos = todos.filter(todo => todo.complete);
+
   return (
     <React.Fragment>
-      <TodoList todos={todos} toggleComplete={toggleComplete} />
+      <TodoList activeTodos={activeTodos} completedTodos={completedTodos} toggleComplete={toggleComplete} />
       <AddTodoForm addTodo={addTodo} />
     </React.Fragment>
   );
