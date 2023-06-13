@@ -11,15 +11,31 @@ export const TodoList: React.FC<TodoListProps> = ({
   todos,
   toggleComplete
 }) => {
+  const activeTodos = todos.filter(todo => !todo.complete);
+  const completedTodos = todos.filter(todo => todo.complete);
+
   return (
-    <ul>
-      {todos.map(todo => (
-        <TodoListItem
-          key={todo.text}
-          todo={todo}
-          toggleComplete={toggleComplete}
-        />
-      ))}
-    </ul>
+    <>
+      <h2>Active Tasks</h2>
+      <ul>
+        {activeTodos.map(todo => (
+          <TodoListItem
+            key={todo.text}
+            todo={todo}
+            toggleComplete={toggleComplete}
+          />
+        ))}
+      </ul>
+      <h2>Completed Tasks</h2>
+      <ul>
+        {completedTodos.map(todo => (
+          <TodoListItem
+            key={todo.text}
+            todo={todo}
+            toggleComplete={toggleComplete}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
